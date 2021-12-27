@@ -214,7 +214,7 @@ class Starboard(commands.Cog):
                             await msg.delete()
                             break
                         e = msg.embeds[0]
-                        e.set_footer(text=f"⭐ {count} | {payload.message_id}")
+                        e.set_author(name=f"⭐ {count} | {payload.message_id}")
                         await msg.edit(content=f"<#{payload.channel_id}>", embed=e)
                         break
 
