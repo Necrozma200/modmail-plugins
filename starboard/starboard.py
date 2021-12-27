@@ -214,7 +214,8 @@ class Starboard(commands.Cog):
                             await msg.delete()
                             break
                         e = msg.embeds[0]
-                        e.set_footer(text=f"⭐ {count} | {payload.message_id}")
+                        e.set_author(name=f"⭐ {count}")
+                        e.set_footer(text=f"{payload.message_id}")
                         await msg.edit(content=f"<#{payload.channel_id}>", embed=e)
                         break
 
@@ -226,15 +227,14 @@ class Starboard(commands.Cog):
                     embed = discord.Embed(
                         color=discord.Colour.gold(),
                         description=message.content,
-                        timestamp=datetime.utcnow(),
-                        title="Jump to message ►",
-                        url=message.jump_url
+                        timestamp=datetime.utcnow()
                     )
+                    embed.add_field(name="Source",value=message.jump_url)
                     embed.set_author(
                         name=str(message.author),
                         icon_url=message.author.avatar_url,
                     )
-                    embed.set_footer(text=f"⭐ {count} | {payload.message_id}")
+                    embed.set_author(text=f"⭐ {count} | {payload.message_id}")
                     if len(message.attachments) > 1:
                         try:
                             embed.set_image(url=message.attachments[0].url)
