@@ -29,7 +29,7 @@ class MusicPlugin(commands.Cog):
                 self.lavalink["host"],
                 self.lavalink["port"],
                 self.lavalink["password"],
-                os.getenv("ll_region", "eu"),
+                os.getenv("ll_region", "in"),
                 "default-node",
             )  # Host, Port, Password, Region, Name
             self.bot.add_listener(
